@@ -1,0 +1,14 @@
+[remap]
+
+importer="dialogue_manager_compiler_8"
+type="Resource"
+uid="uid://c5n106s6ud3oo"
+path="res://.godot/imported/Eggy.dialogue-e2195a7367a1e9a693c319de3c5fea6b.tres"
+
+[deps]
+
+source_file="res://Dialogues/Eggy.dialogue"
+dest_files=["res://.godot/imported/Eggy.dialogue-e2195a7367a1e9a693c319de3c5fea6b.tres"]
+
+[params]
+

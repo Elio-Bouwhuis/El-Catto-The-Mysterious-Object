@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://n348mfoh72v6"]
+
+[ext_resource type="Script" path="res://Characters/cow.gd" id="1_jqq0c"]
+[ext_resource type="Texture2D" uid="uid://dbv1dkoqjf12h" path="res://art/Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Characters/Free Cow Sprites.png" id="1_wfm6v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s6w7s"]
+size = Vector2(27, 17)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qcamt"]
+radius = 202.556
+
+[node name="Cow" type="CharacterBody2D"]
+script = ExtResource("1_jqq0c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wfm6v")
+hframes = 3
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 4.5)
+shape = SubResource("RectangleShape2D_s6w7s")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_qcamt")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

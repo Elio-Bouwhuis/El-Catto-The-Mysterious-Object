@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://b10gsfgo6umw7"]
+
+[ext_resource type="Script" path="res://Characters/eggy.gd" id="1_knxmg"]
+[ext_resource type="Texture2D" uid="uid://34g1ylptmcfs" path="res://art/Eggy.png" id="1_paudn"]
+[ext_resource type="Resource" uid="uid://c5n106s6ud3oo" path="res://Dialogues/Eggy.dialogue" id="2_pooih"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ogugx"]
+size = Vector2(10, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_huri5"]
+size = Vector2(139, 20)
+
+[node name="Eggy" type="StaticBody2D"]
+script = ExtResource("1_knxmg")
+dialogue_resource = ExtResource("2_pooih")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_paudn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ogugx")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(64.5, 0)
+shape = SubResource("RectangleShape2D_huri5")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

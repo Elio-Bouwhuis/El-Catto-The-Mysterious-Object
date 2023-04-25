@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dl0anca26a1ba"]
+
+[ext_resource type="Script" path="res://Characters/pick_up_big_bullet.gd" id="1_2h8jc"]
+[ext_resource type="Texture2D" uid="uid://cm1ydqmq3jbhk" path="res://art/BigBall.png" id="1_f4kvw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ouxq8"]
+radius = 3.3
+
+[node name="StaticBody2D" type="StaticBody2D" groups=["bigBullet"]]
+script = ExtResource("1_2h8jc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ouxq8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.0729322, 0.0259266)
+scale = Vector2(0.00518146, 0.00518146)
+texture = ExtResource("1_f4kvw")

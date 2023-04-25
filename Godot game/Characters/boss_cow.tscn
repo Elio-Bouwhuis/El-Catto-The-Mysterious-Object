@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://7lg1fgcnvvdt"]
+
+[ext_resource type="Script" path="res://Characters/boss_cow.gd" id="1_0f6tq"]
+[ext_resource type="Texture2D" uid="uid://twafbhts2wqn" path="res://art/BossCow.png" id="1_0kgdu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2pbf"]
+size = Vector2(81, 51)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_spt5o"]
+radius = 428.562
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_0f6tq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.94118, 2.94118)
+texture = ExtResource("1_0kgdu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_c2pbf")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Node2D"]
+position = Vector2(53, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_spt5o")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

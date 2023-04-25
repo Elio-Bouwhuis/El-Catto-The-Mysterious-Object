@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctmi1gclfx1cs"]
+
+[ext_resource type="Texture2D" uid="uid://b4r0cdteo47mv" path="res://art/Flappy.png" id="1_bj6qf"]
+[ext_resource type="Script" path="res://Characters/flappy.gd" id="1_iok4o"]
+[ext_resource type="Resource" uid="uid://d3b4f3p7f4fbl" path="res://Dialogues/Flappy.dialogue" id="2_0wrus"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_htqnl"]
+size = Vector2(10, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mnho7"]
+size = Vector2(53, 44)
+
+[node name="Flappy" type="StaticBody2D"]
+script = ExtResource("1_iok4o")
+dialogue_resource = ExtResource("2_0wrus")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bj6qf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_htqnl")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(21.5, 15)
+shape = SubResource("RectangleShape2D_mnho7")
+
+[node name="TimerFlappy" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="TimerFlappy" to="." method="_on_timer_timeout"]

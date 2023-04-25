@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqp5l8na24m34"]
+
+[ext_resource type="Texture2D" uid="uid://dxlunuq50yk6l" path="res://art/FastBall.png" id="1_jao44"]
+[ext_resource type="Script" path="res://Characters/pick_up_fast_bullet.gd" id="1_qe11s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3o53x"]
+radius = 3.3
+
+[node name="StaticBody2D" type="StaticBody2D" groups=["fastBullet"]]
+script = ExtResource("1_qe11s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3o53x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.011178, -0.0489902)
+scale = Vector2(0.00511112, 0.0051775)
+texture = ExtResource("1_jao44")

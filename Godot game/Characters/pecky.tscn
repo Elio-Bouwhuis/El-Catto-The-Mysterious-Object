@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cmskruy10kvmg"]
+
+[ext_resource type="Texture2D" uid="uid://cltwb4uhji6hh" path="res://art/Pecky.png" id="1_52ty7"]
+[ext_resource type="Script" path="res://Characters/pecky.gd" id="1_buv7w"]
+[ext_resource type="Resource" uid="uid://cfhhiia5lmwk6" path="res://Dialogues/Pecky.dialogue" id="2_b7dpv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_47slp"]
+size = Vector2(10, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rpedn"]
+size = Vector2(157, 140)
+
+[node name="Pecky" type="StaticBody2D"]
+script = ExtResource("1_buv7w")
+dialogue_resource = ExtResource("2_b7dpv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_52ty7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_47slp")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(20.5, -63)
+shape = SubResource("RectangleShape2D_rpedn")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

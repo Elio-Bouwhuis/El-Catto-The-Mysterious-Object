@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwwn21yib2h4o"]
+
+[ext_resource type="Texture2D" uid="uid://nauguoap51lx" path="res://art/TreeGreenBerries.png" id="1_h4oel"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8lqlo"]
+radius = 7.0
+height = 20.0
+
+[node name="TreeWBerries" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -5)
+scale = Vector2(1.654, 1.654)
+texture = ExtResource("1_h4oel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 17)
+shape = SubResource("CapsuleShape2D_8lqlo")
