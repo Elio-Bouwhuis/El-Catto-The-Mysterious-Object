@@ -114,10 +114,10 @@ func die():
 	health -= 1
 	HUD.updateLives()
 	if health == 0:
-		queue_free()	
+		get_tree().reload_current_scene()	
 		
 
 func bossDamage():
 	health -= 3
 	if health == 0:
-		queue_free()	
+		get_tree().reload_current_scene()	
